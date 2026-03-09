@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": ["demo-viewer"]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/login"
+    }
+  }
+}
