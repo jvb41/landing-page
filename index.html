@@ -68,8 +68,6 @@
       flex-wrap: wrap;
     }
 
-    .logo-block {}
-
     .eyebrow {
       font-size: .72rem;
       letter-spacing: .18em;
@@ -127,6 +125,43 @@
     .search-bar {
       margin: 2.5rem 0;
       animation: fadeUp .55s .15s ease both;
+    }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .35rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      margin-bottom: 1.5rem;
+      animation: fadeUp .55s .2s ease both;
+    }
+
+    .tab {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .84rem;
+      font-weight: 500;
+      letter-spacing: .01em;
+      padding: .55rem .85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .tab:hover {
+      background: var(--hover-bg);
+      color: var(--text);
+    }
+
+    .tab.active {
+      background: rgba(232,200,122,.14);
+      color: var(--accent);
     }
 
     .search-wrap {
@@ -370,12 +405,17 @@
 
   <!-- CARDS -->
   <section class="cards-section">
+    <div class="tabs" role="tablist" aria-label="Application groups">
+      <button class="tab active" type="button" data-tab="surveillance" role="tab" aria-selected="true">Surveillance Studio</button>
+      <button class="tab" type="button" data-tab="compliance" role="tab" aria-selected="false">Compliance Studio</button>
+      <button class="tab" type="button" data-tab="other" role="tab" aria-selected="false">Other</button>
+    </div>
     <p class="section-label">Applications — <span id="count">5</span> apps</p>
     <div class="cards" id="cards">
 
       <!-- ① Edit each card: change href, emoji, name, desc, and tag -->
 
-      <a href="https://kpmg-kare-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-name="KPMG Alert Review Engine (KARE)">
+      <a href="https://kpmg-kare-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-tab="surveillance" data-name="KPMG Alert Review Engine (KARE)">
         <div class="card-top">
           <span class="card-icon icon-teal">📊</span>
           <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -385,7 +425,7 @@
         <span class="card-tag tag-analytics">Trade Surveillance</span>
       </a>
 
-      <a href="http://kpmg-pie-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-name="Public Influence and Persona Investigation (PIE)">
+      <a href="http://kpmg-pie-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-tab="other" data-name="Public Influence and Persona Investigation (PIE)">
         <div class="card-top">
           <span class="card-icon icon-amber">⚙️</span>
           <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -395,7 +435,7 @@
         <span class="card-tag tag-ops">Ops</span>
       </a>
 
-      <a href="https://your-app-3.azurewebsites.net" target="_blank" rel="noopener" class="card" data-name="Admin Console">
+      <a href="https://your-app-3.azurewebsites.net" target="_blank" rel="noopener" class="card" data-tab="other" data-name="Admin Console">
         <div class="card-top">
           <span class="card-icon icon-purple">🛡️</span>
           <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -405,7 +445,7 @@
         <span class="card-tag tag-admin">Admin</span>
       </a>
 
-      <a href="http://kpmg-kdar-app.azurewebsites.net" target="_blank" rel="noopener" class="card" data-name="KPMG K-DAR Controls Analytics">
+      <a href="http://kpmg-kdar-app.azurewebsites.net" target="_blank" rel="noopener" class="card" data-tab="compliance" data-name="KPMG K-DAR Controls Analytics">
         <div class="card-top">
           <span class="card-icon icon-blue">📋</span>
           <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -415,7 +455,7 @@
         <span class="card-tag tag-reporting">Controls Analytics</span>
       </a>
 
-      <a href="https://kpmg-kats-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-name="KPMG Automated Tuning Solution">
+      <a href="https://kpmg-kats-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-tab="surveillance" data-name="KPMG Automated Tuning Solution">
         <div class="card-top">
           <span class="card-icon icon-orange">🔧</span>
           <svg class="card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
@@ -439,20 +479,42 @@
 <script>
   const input = document.getElementById('search');
   const cards = document.querySelectorAll('.card');
+  const tabs = document.querySelectorAll('.tab');
   const countEl = document.getElementById('count');
+  let activeTab = 'surveillance';
 
-  input.addEventListener('input', () => {
+  function applyFilters() {
     const q = input.value.toLowerCase().trim();
     let visible = 0;
+
     cards.forEach(card => {
+      const tab = card.dataset.tab;
       const name = card.dataset.name.toLowerCase();
       const desc = card.querySelector('.card-desc').textContent.toLowerCase();
-      const show = !q || name.includes(q) || desc.includes(q);
+      const matchesTab = tab === activeTab;
+      const matchesSearch = !q || name.includes(q) || desc.includes(q);
+      const show = matchesTab && matchesSearch;
       card.classList.toggle('hidden', !show);
       if (show) visible++;
     });
+
     countEl.textContent = visible;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      activeTab = tab.dataset.tab;
+      tabs.forEach(btn => {
+        const isActive = btn === tab;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', String(isActive));
+      });
+      applyFilters();
+    });
   });
+
+  input.addEventListener('input', applyFilters);
+  applyFilters();
 </script>
 </body>
 </html>
