@@ -307,11 +307,13 @@
     }
 
     /* ── Tag colors ── */
-    .tag-analytics  { background: rgba(110,231,192,.1); color: var(--accent2); }
-    .tag-ops        { background: rgba(232,200,122,.1); color: var(--accent); }
-    .tag-admin      { background: rgba(160,130,255,.1); color: #b8a4ff; }
-    .tag-reporting  { background: rgba(100,180,255,.1); color: #7ec8ff; }
-    .tag-tools      { background: rgba(255,150,100,.1); color: #ffb07a; }
+    .tag-trade-surv    { background: rgba(110,231,192,.1);  color: #6ee7c0; }
+    .tag-txn-mon       { background: rgba(103,232,249,.1);  color: #67e8f9; }
+    .tag-ecomms        { background: rgba(192,132,252,.1);  color: #c084fc; }
+    .tag-controls-rat  { background: rgba(100,180,255,.1);  color: #7ec8ff; }
+    .tag-controls-up   { background: rgba(249,168,212,.1);  color: #f9a8d4; }
+    .tag-customer      { background: rgba(232,200,122,.1);  color: #e8c87a; }
+    .tag-resource      { background: rgba(251,146,60,.1);   color: #fb923c; }
 
     /* ── Icon bg colors ── */
     .icon-teal   { background: rgba(110,231,192,.12); }
@@ -422,7 +424,7 @@
         </div>
         <p class="card-name">KPMG Automated Tuning Solution<br>(KATS)</p>
         <p class="card-desc">Continuous ATL and BTL tuning for Trade Surveillance</p>
-        <span class="card-tag tag-analytics">Trade Surveillance</span>
+        <span class="card-tag tag-trade-surv">Trade Surveillance</span>
       </a>
 
       <a href="https://10ay.online.tableau.com/#/site/kpmgtelighthouse/views/EscalationAnalyticsDashboard-Phase1-Final_17742999213790/01-ExecutiveSummary" target="_blank" rel="noopener" class="card" data-tab="surveillance" data-name="KPMG Alert Management and Analytics (KAMA)">
@@ -432,7 +434,7 @@
         </div>
         <p class="card-name">KPMG Alert Management and Analytics (KAMA)</p>
         <p class="card-desc">Executive dashboard for escalation analytics and surveillance alert oversight</p>
-        <span class="card-tag tag-analytics">Transaction Monitoring</span>
+        <span class="card-tag tag-txn-mon">Transaction Monitoring</span>
       </a>
 
       <a href="#" onclick="return false;" class="card" data-tab="surveillance" data-name="KPMG Input Monitoring Solution (KIMS)" aria-disabled="true">
@@ -442,7 +444,7 @@
         </div>
         <p class="card-name">KPMG Input Monitoring Solution (KIMS)</p>
         <p class="card-desc">Surveillance input data completeness and accuracy continuous monitoring</p>
-        <span class="card-tag tag-analytics">Trade Surveillance</span>
+        <span class="card-tag tag-trade-surv">Trade Surveillance</span>
       </a>
 
       <a href="#" onclick="return false;" class="card" data-tab="surveillance" data-name="KPMG E-Comms Monitoring Platform (KEMP)" aria-disabled="true">
@@ -452,7 +454,7 @@
         </div>
         <p class="card-name">KPMG E-Comms Monitoring Platform (KEMP)</p>
         <p class="card-desc">Platform to categorize e-comms and conduct targeted surveillance</p>
-        <span class="card-tag tag-analytics">E-Comms Surveillance</span>
+        <span class="card-tag tag-ecomms">E-Comms Surveillance</span>
       </a>
 
       <a href="http://kpmg-pie-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-tab="advanced assessment" data-name="Public Influence and Persona Investigation (PIE)">
@@ -462,7 +464,7 @@
         </div>
         <p class="card-name">Public Influence and Persona Investigation (PIE)</p>
         <p class="card-desc">Customer data compilation to evaluate customer lifecycle risk</p>
-        <span class="card-tag tag-ops">Customer Profiling</span>
+        <span class="card-tag tag-customer">Customer Profiling</span>
       </a>
 
       <a href="#" onclick="return false;" class="card" data-tab="other" data-name="KPMG Resource and Skills Ontology Normalization Engine (KRS-ONE)" aria-disabled="true">
@@ -472,7 +474,7 @@
         </div>
         <p class="card-name">KPMG Resource and Skills Ontology Normalization Engine (KRS-ONE)</p>
         <p class="card-desc">Automated solution to normalize skills, map to roles, and deliver explainable match scores—at scale</p>
-        <span class="card-tag tag-ops">Resource Matching Optimization</span>
+        <span class="card-tag tag-resource">Resource Matching Optimization</span>
       </a>
 
       <a href="http://kpmg-kdar-app.azurewebsites.net" target="_blank" rel="noopener" class="card" data-tab="compliance" data-name="KPMG K-DAR Controls Analytics">
@@ -482,7 +484,7 @@
         </div>
         <p class="card-name">KPMG Data Analysis and Reporting (K-DAR)<br><br></p>
         <p class="card-desc">Review controls inventory for duplications and evaluate control strength</p>
-        <span class="card-tag tag-reporting">Controls Rationalization</span>
+        <span class="card-tag tag-controls-rat">Controls Rationalization</span>
       </a>
 
       <a href="https://10ay.online.tableau.com/#/site/kpmgtelighthouse/redirect_to_view/17180480" target="_blank" rel="noopener" class="card" data-tab="compliance" data-name="KPMG Citations Policies Controls Mapping and Gap Remediation (KMAG)">
@@ -492,7 +494,7 @@
         </div>
         <p class="card-name">KPMG Compliance and Risk Assessment Solution (K-CRAS)</p>
         <p class="card-desc">Maps products, processes, risks, controls to identify and remediate compliance gaps</p>
-        <span class="card-tag tag-reporting">Controls and Policies Uplift</span>
+        <span class="card-tag tag-controls-up">Controls and Policies Uplift</span>
       </a>
 
       <a href="https://kpmg-kare-app.azurewebsites.net/" target="_blank" rel="noopener" class="card" data-tab="surveillance" data-name="KPMG Alert Review Engine (KARE)">
@@ -502,7 +504,7 @@
         </div>
         <p class="card-name">KPMG Alert Review Engine<br>(KARE)</p>
         <p class="card-desc">Trade Surveillance Alert Review QA and Narrative Generation</p>
-        <span class="card-tag tag-analytics">Trade Surveillance</span>
+        <span class="card-tag tag-trade-surv">Trade Surveillance</span>
       </a>
 
     </div>
