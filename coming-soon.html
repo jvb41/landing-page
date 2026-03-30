@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon | Viper Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161e;
+      --border: #1f2433;
+      --accent: #c084fc;
+      --text: #dde3f0;
+      --muted: #6b7599;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      padding: 2rem;
+    }
+
+    .panel {
+      width: min(640px, 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      padding: 2.2rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .8rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: .75rem;
+      color: #fff;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 42ch;
+      margin: 0 auto;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1.4rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <p class="eyebrow">Viper Hub</p>
+    <h1>Coming Soon</h1>
+    <p>This experience is currently under construction. Please check back soon for updates.</p>
+    <a href="index.html">← Back to Hub</a>
+  </main>
+</body>
+</html>
