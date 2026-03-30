@@ -164,6 +164,61 @@
       color: var(--accent);
     }
 
+    .tab-surveillance {
+      background: rgba(110,231,192,.08);
+      color: #6ee7c0;
+    }
+
+    .tab-surveillance.active {
+      background: rgba(110,231,192,.18);
+      color: #6ee7c0;
+    }
+
+    .tab-compliance {
+      background: rgba(100,180,255,.08);
+      color: #7ec8ff;
+    }
+
+    .tab-compliance.active {
+      background: rgba(100,180,255,.18);
+      color: #7ec8ff;
+    }
+
+    .tab-advanced {
+      background: rgba(232,200,122,.08);
+      color: #e8c87a;
+    }
+
+    .tab-advanced.active {
+      background: rgba(232,200,122,.18);
+      color: #e8c87a;
+    }
+
+    .tab-reporting {
+      background: rgba(192,132,252,.08);
+      color: #c084fc;
+    }
+
+    .tab-reporting.active {
+      background: rgba(192,132,252,.18);
+      color: #c084fc;
+    }
+
+    .tab-notice {
+      display: none;
+      margin-bottom: 1.2rem;
+      font-size: .84rem;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: .75rem .9rem;
+      background: rgba(192,132,252,.05);
+    }
+
+    .tab-notice.show {
+      display: block;
+    }
+
     .search-wrap {
       position: relative;
       max-width: 480px;
@@ -408,11 +463,13 @@
   <!-- CARDS -->
   <section class="cards-section">
     <div class="tabs" role="tablist" aria-label="Application groups">
-      <button class="tab active" type="button" data-tab="surveillance" role="tab" aria-selected="true">Surveillance Studio</button>
-      <button class="tab" type="button" data-tab="compliance" role="tab" aria-selected="false">Compliance Studio</button>
-      <button class="tab" type="button" data-tab="advanced assessment" role="tab" aria-selected="false">Advanced Assessment Studio</button>
+      <button class="tab tab-surveillance active" type="button" data-tab="surveillance" role="tab" aria-selected="true">Surveillance Studio</button>
+      <button class="tab tab-compliance" type="button" data-tab="compliance" role="tab" aria-selected="false">Compliance Studio</button>
+      <button class="tab tab-advanced" type="button" data-tab="advanced assessment" role="tab" aria-selected="false">Advanced Assessment Studio</button>
+      <button class="tab tab-reporting" type="button" data-tab="reporting" role="tab" aria-selected="false">Reporting Studio</button>
     </div>
     <p class="section-label">Applications — <span id="count">5</span> apps</p>
+    <p id="tabNotice" class="tab-notice">Reporting Studio is under construction.</p>
     <div class="cards" id="cards">
 
       <!-- ① Edit each card: change href, emoji, name, desc, and tag -->
@@ -527,6 +584,7 @@
   const cards = document.querySelectorAll('.card');
   const tabs = document.querySelectorAll('.tab');
   const countEl = document.getElementById('count');
+  const tabNotice = document.getElementById('tabNotice');
   let activeTab = 'surveillance';
 
   function applyFilters() {
@@ -545,6 +603,7 @@
     });
 
     countEl.textContent = visible;
+    tabNotice.classList.toggle('show', activeTab === 'reporting');
   }
 
   tabs.forEach(tab => {
